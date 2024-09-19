@@ -19,10 +19,15 @@ out vec2 texCoord;
 out vec3 foliageColor;
 out vec2 lightMapCoords;
 out vec3 geometryNormal;
+out float blockLightLevel;
+out vec3 viewSpacePosition;
 
 void main(){
 
     geometryNormal = normalMatrix*vaNormal;
+
+    vec4 viewSpacePosition4 = modelViewMatrix * vec4(position,1.0);
+    viewSpacePosition = viewSpacePosition4.xyz;
 
     texCoord = vaUV0;
     foliageColor = vaColor.rgb;
